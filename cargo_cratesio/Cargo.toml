@@ -1,0 +1,19 @@
+[package]
+name = "cargo_cratesio"
+description = "Learning about crates.io"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+# Customizing release profiles
+# cargo build
+[profile.dev]
+opt-level = 0
+
+# cargo build --release
+[profile.release]
+opt-level = 3

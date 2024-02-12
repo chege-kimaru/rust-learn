@@ -1,0 +1,8 @@
+cargo login api-token
+cargo publish
+
+Change version then republish to publish a new version
+
+# Deprecating Versions from Crates.io with cargo yank
+cargo yank --vers 1.0.1
+cargo yank --vers 1.0.1 --undo

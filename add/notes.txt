@@ -1,0 +1,7 @@
+cargo new add_one --lib
+
+cargo run -p adder // To run a specific package
+cargo test -p add_one
+cargo publish -p add_one
+
+cargo install ripgrep - Install binary crates locally
