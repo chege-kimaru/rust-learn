@@ -18,6 +18,7 @@ fn main() {
     // We can't use just Mutex::new(0) since the counter will be owned by many threads
     // We can't use Rc<Mutex<i32>>, which allows multiple owners since Rc is not thread safe
     // So we use Arc - Atomic reference counter instead of Rc which is memory safe
+    // Note,  just like using Rc<T> came with the risk of creating reference cycles, Mutex<T> comes with risk of deadlocks. These occur when an operation needs to lock two resources and two threads have each acquired one of the locks, causing them to wait for each other forever
     let counter = Arc::new(Mutex::new(0));
     let mut handles = vec![];
 
@@ -37,4 +38,7 @@ fn main() {
     }
 
     println!("Result: {}", *counter.lock().unwrap());
+
+    // The Send marker trait indicates that ownership of values of the type implementing Send can be transferred between threads.
+    // The Sync marker trait indicates that it is safe for the type implementing Sync to be referenced from multiple threads.
 }
